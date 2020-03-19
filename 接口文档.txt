@@ -1,0 +1,51 @@
+1.图片验证码加载
+请求地址：/api/v1.0/imagecode/ + uuid
+请求方法：GET
+请求参数：
+    参数名     参数类型       是否必须         备注
+    url路径参数：作为图片验证码的唯一编号，UUID
+返回结果：图片类型
+    Flask中默认响应的类型：
+    Content-Type:text/html
+    修改响应的类型：
+    Content-Type:image/jpg
+
+@app.before_request
+def set_cookies()
+    token = csrf.generate_token()
+    resp = make_response()
+    resp.set_cookie(key,value)
+    return resp
+
+
+2.发送短信
+请求地址：/api/v1.0/smscode/<参数>
+请求方法：GET
+请求参数：
+    参数名       是否必须         参数类型        参数说明
+    mobile         True         字符串         用户输入的手机号
+    text           True         字符串         用户输入的图片验证码的内容
+    id             True         字符串         图片验证码的编号UUID
+
+返回结果：
+    发送成功：
+    {errno:OK,errmsg:发送成功}
+    发送失败：
+    {errno:'错误状态码',errmsg:发送失败}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
